@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Daniel">
+
+    <title>The Real Dan: Sign Up Today!</title>
+
+    <link rel="stylesheet" href="./Styles/Pages/index.css">
+    <link rel="stylesheet" href="./Styles/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7eb84d2f2f.js"></script>
+    <script src="./Scripts/index.js"></script>
+    <script src="./Scripts/authentication.js"></script>
+    <script src="./Scripts/default.js"></script>
+    <title>The Real Dan: Its party time</title>
+
+  </head>
+  <body>
+    <div id="main">
+      <div id="descriptionSection">
+        <div class="logo">
+        </div>
+        <div class="description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </div>
+      </div>
+      <div id="joinPartySection">
+        <input id="partyNumber" placeholder="Party PIN">
+        </input>
+        <a id="joinParty" class="button" href="#" onclick="joinClick()">
+          <div class="content">
+            Join
+          </div>
+        </a>
+        <a id="createParty" class="button" href="/spotify/login">
+          <div class="content">
+            Create
+          </div>
+        </a>
+      </div>
+    </div>
+      <script>
+        window.TheRealDan.index.init();
+      </script>
+  </body>
+</html>
+
+<script>
+  function joinClick() {
+    let url = "/spotify?p=" + $("#partyNumber").val();
+    window.location = url;
+  }  
+</script>
+

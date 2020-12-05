@@ -1,0 +1,67 @@
+#settingsWrapper {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 50px;
+  padding: 10px;
+}
+
+.option {
+  margin-top: 20px;
+  padding-bottom: 5px;
+}
+.option .heading {
+  font-size: 20px;
+  color: white;
+}
+.option .text {
+  color: lightgray;
+  padding-top: 2px;
+}
+.option .wrapper {
+  display: flex;
+}
+
+#playbackModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: black;
+  padding: 10px;
+}
+#playbackModal .close {
+  color: white;
+  font-size: 15px;
+  z-index: 10;
+  position: absolute;
+}
+#playbackModal .button {
+  margin-left: auto;
+  margin-right: auto;
+}
+#playbackModal .header {
+  justify-content: unset;
+  padding-left: 10px;
+  padding-right: 20px;
+  font-size: 20px;
+}
+#playbackModal .content {
+  position: relative;
+  top: 50px;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+}
+#playbackModal .button.oval {
+  width: 180px;
+  border-radius: 28px;
+  margin-top: 20px;
+}
+
+/*# sourceMappingURL=spotifySettings.css.map */

@@ -1,0 +1,11 @@
+Zip the package
+
+zip package.zip -r * .[^.]*
+
+Watch scss changes
+sass --watch Public/Styles:Public/Styles
+
+ZIP using git
+ git archive --format=zip HEAD -o gitpackage.zip
+
+nodemon --inspect app.js

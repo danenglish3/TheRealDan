@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Daniel">
+
+    <title>Its party time</title>
+
+    <link rel="stylesheet" href="../Styles/Pages/spotifySettings.css">
+    <link rel="stylesheet" href="../Styles/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/7eb84d2f2f.js"></script>
+    <script src="../Scripts/spotifySettings.js"></script>
+    <script src="../Scripts/default.js"></script>
+  </head>
+  <body>
+    <div class="header">Settings</div>
+    <div id="settingsWrapper">
+      <div class="option">
+        <div class="heading">Playback</div>
+        <div class="wrapper">
+          <div class="text">Have requested songs added directly to your queue, or add them to a playlist</div>
+          <select id="playbackSelect" onchange="playbackSelectChange()">
+            <option value="queue">Queue</option>
+            <option value="playlist">Playlist</option>
+          </select>          
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span onclick="loadSearchPage()"><i class="fas fa-home"></i></span>
+      <span><i class="fas fa-cog"></i></span>
+    </div>
+
+    <div id="errorModal" class="modal mobile error hidden"> 
+      <div id="errorMessage" class="text"></div>
+      <div id="errorButton" class="button small" onclick="errorButtonClick();">Ok</div>
+    </div>
+
+    <div id="playbackModal" class="">
+      <div class="header">
+        <div class="close" onclick="closeModal('playbackModal')">X</div>
+        <div style="margin-left: auto; margin-right: auto;">Add to playlist</div>
+      </div>
+      <div class="content">
+        <div class="button oval">New Playlist</div>
+      </div>
+      <a id="savePlaybackClick" class="button" href="#" onclick="savePlaybackClick()">
+        <span>Save</span>
+      </a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "therealdan",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --inspect app.js",
+    "scss": "node-sass --watch Public/Styles -o Public/Styles",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dan",
+  "license": "ISC",
+  "keywords": [],
+  "description": "",
+  "dependencies": {
+    "aws-sdk": "^2.804.0",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "html": "^1.0.0",
+    "mssql": "^6.2.3",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "superagent": "^6.1.0"
+  }
+}
