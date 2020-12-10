@@ -7,7 +7,7 @@ module.exports = {
         'password': process.env.password || 'admin',
         'server': process.env.server || 'localhost\\SQLEXPRESS',
         'database': "TheRealDan",
-        'port': process.env.port, //3000,
+        'port': 1433,//process.env.port || 3000,
         'options': {
             'excrypt': true,
             "enableArithAbort": true
