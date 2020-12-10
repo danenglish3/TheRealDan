@@ -25,7 +25,7 @@
   padding: 10px;
   position: absolute;
   top: 50px;
-  bottom: 50px;
+  bottom: 100px;
   left: 0;
   right: 0;
   background: black;
@@ -60,6 +60,27 @@
 .album-icon {
   height: 35px;
   width: 35px;
+}
+
+#nowPlayingWrapper {
+  position: absolute;
+  bottom: 52px;
+  left: 0;
+  right: 0;
+  height: 50px;
+  color: white;
+  background-color: #504949;
+}
+#nowPlayingWrapper #playingTrack {
+  margin-left: 55px;
+}
+#nowPlayingWrapper #playingTrack .info {
+  margin-top: 8px;
+}
+
+#progress {
+  border-top: 1px solid white;
+  width: 0%;
 }
 
 /*# sourceMappingURL=spotify.css.map */

@@ -51,6 +51,34 @@ exports.getHostsPlaylists = async function(token) {
     });
 }
 
+exports.getHostsCurrentlyPlayingSong = async function(token) {
+    return new Promise((resolve, reject) => {
+        let url = encodeURI(config.hostCurrentSong);
+        superagent.get(url)
+            .set('Authorization', 'Bearer ' + token.AccessToken)
+            .then(res => {
+                resolve(res);
+            })
+            .catch(err => {
+                console.log(err.status);
+                if (err.status == "401" || err.status == 401) {
+                    var accessToken = refreshToken(token);
+
+                    superagent.get(url)
+                    .set('Authorization', 'Bearer ' + accessToken)
+                    .then(res => {
+                        resolve(res.body);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+                } else {
+                    reject(err);
+                }
+            });
+    });
+}
+
 exports.search = async function(token, query, offset) {
     return new Promise((resolve, reject) => {
         let url = encodeURI(config.search + "?q=" + query + "&type=artist,track&limit=12&offset=" + offset);

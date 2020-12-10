@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="../Styles/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/7eb84d2f2f.js"></script>
-    <script src="../Scripts/spotify.js"></script>
     <script src="../Scripts/default.js"></script>
+    <script src="../Scripts/spotify.js"></script>
   </head>
 
     <% if (isHost) { %>
@@ -29,7 +29,11 @@
 
   <body>
     <input id="searchInput" placeholder="Search" oninput="songSearch()"></input>
-    <div id="searchResultsWrapper" onscroll="resultsScroll.call(this);">
+    <div id="searchResultsWrapper" onscroll="resultsScroll.call(this);"></div>
+    <div id="nowPlayingWrapper">
+      <div id="progress"></div>
+      <div id="playingTrack">
+      </div>
     </div>
     <div class="footer">
       <span><i class="fas fa-home"></i></span>

@@ -45,6 +45,24 @@ spotify.get('/hostsPlaylists', async function(req, res) {
     }
 });
 
+spotify.get('/hostsCurrentSong', async function(req, res) {
+    try {
+        var pin = req.query.pin;
+        var token = await db.spotify.getToken(pin);
+        var results = await service.getHostsCurrentlyPlayingSong(token);
+
+        if (results.status == "200") {
+            res.status(200).end('{"success" : true, "status" : 200, "data":' + JSON.stringify(results.body) + '}');
+        } else if (results.status == "204"){
+            res.status(200).end('{"success" : true, "status" : 204, "message": "No content currently playing."}');
+        } else {
+            res.status(200).end('{"success" : false, "status" : 400, "message": "' + results.message + '"}');
+        }
+    } catch (err) {
+        res.status(500).end('{"success" : false, "status" : 500, sessage: "Something happened.", err": '+ err + '}');
+    }
+});
+
 spotify.get('/addSong', async function(req, res) {
     try {
         db.spotify.removeInactivePins()

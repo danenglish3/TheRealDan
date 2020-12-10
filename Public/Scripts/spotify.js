@@ -1,5 +1,34 @@
 var uri = "";
 var currentRequest;
+var currentlyPlayingSong;
+
+(function() {
+    getCurrentlyPlayingSong();
+    currentlyPlayingSong = setInterval(getCurrentlyPlayingSong, 10000);
+})();
+
+function getCurrentlyPlayingSong() {
+    $.ajax({
+        url: "/spotify/hostsCurrentSong",
+        data: { "pin": getPin() }
+    })
+    .done(function(res) {
+        let data = JSON.parse(res);
+        console.log(data);
+        if (data.success) {
+            if (data.status == 204) {
+            } else {
+                $("#playingTrack")[0].innerHTML = '';
+                $("#playingTrack").append("<div class=\"info\"><div class=\"text\">"+data.data.item.name+"</div><div class=\"text artist\">"+data.data.item.artists[0].name+"</div></div>");
+
+                let length = data.data.item.duration_ms;
+                let current = data.data.progress_ms;
+                let progress = ((current / length) * 100) + "%";
+                $("#progress").width(progress);
+            }
+        }
+    });
+}
 
 function resultsScroll() {
     let el = $(this);
