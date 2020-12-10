@@ -30,8 +30,6 @@ router.get('/api/callback', function (req, res) {
 
     try {
         let sid = req.cookies["connect.sid"];
-        console.log(req);
-        console.log(sid);
 
         spotify.requestToken(req.query.code, function(success, message, response) {
             if (success) {
