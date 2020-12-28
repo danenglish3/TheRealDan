@@ -4,10 +4,10 @@ var pjson = require('./package.json');
 module.exports = {
     'dbConfig': {
         'user': process.env.user || 'admin',
-        'password': process.env.password || 'admin',
-        'server': process.env.server || 'localhost\\SQLEXPRESS',
+        'password': process.env.password || 'lone-pride-padde',
+        'server': process.env.server || 'MSI',
         'database': "TheRealDan",
-        'port': 1433,//process.env.port || 3000,
+        'port': 1433,
         'options': {
             'excrypt': true,
             "enableArithAbort": true
@@ -20,7 +20,7 @@ module.exports = {
     'spotify': {
         'authoriseEndpoint': 'https://accounts.spotify.com/authorize',
         'tokenEndpoint': 'https://accounts.spotify.com:443/api/token',
-        'authoriseScopes': 'user-read-private user-read-email user-modify-playback-state user-read-currently-playing',
+        'authoriseScopes': 'user-read-private user-read-email user-modify-playback-state user-read-currently-playing playlist-modify-public playlist-read-private',
         'authoriseCallback': process.env.authoriseCallback || 'http://127.0.0.1:3000/api/callback',
         'clientId': 'eeae1743e10c4c548a3a0a5d43e01595',
         'clientSecret': '3f2fb62f975548cca7ed33493d856ddc',
@@ -28,6 +28,8 @@ module.exports = {
         'addToQueueEndpoint': 'https://api.spotify.com/v1/me/player/queue',
         'searchArtist': 'https://api.spotify.com/v1/artists/{id}/top-tracks?country=NZ',
         'hostPlaylists': 'https://api.spotify.com/v1/me/playlists',
-        'hostCurrentSong': 'https://api.spotify.com/v1/me/player/currently-playing'
+        'hostCurrentSong': 'https://api.spotify.com/v1/me/player/currently-playing',
+        'hostProfile': 'https://api.spotify.com/v1/me',
+        'createPlaylist': 'https://api.spotify.com/v1/users/{user_id}/playlists'
     }
 }

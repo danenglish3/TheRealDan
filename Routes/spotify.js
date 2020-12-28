@@ -45,6 +45,19 @@ spotify.get('/hostsPlaylists', async function(req, res) {
     }
 });
 
+spotify.get('/checkIfHost', async function(req, res) {
+    try {
+        var pin = req.query.pin;
+        let sid = req.cookies["connect.sid"];
+        var hostSID = await db.spotify.getHostSID(pin);
+        let isHost = hostSID === sid;
+
+        res.status(200).end('{"success" : true, "status" : 200, "isHost":' + sid == hostSID + '}');
+    } catch (err) {
+        res.status(500).end('{"success" : false, "status" : 500, sessage: "Something happened.", err": '+ err + '}');
+    }
+});
+
 spotify.get('/hostsCurrentSong', async function(req, res) {
     try {
         var pin = req.query.pin;
@@ -107,6 +120,31 @@ spotify.get('/searchArtist', async function(req, res) {
         var results = await service.searchArtist(id, token);
 
         if (results) {
+            res.status(200).end('{"success" : true, "status" : 200, "data": '+ JSON.stringify(results) +'}');
+        } else {
+            res.status(400).end('{"success" : false, "status" : 400, "message": "' + + '"}');
+        }
+    } catch(err) {
+        res.status(500).end('{"success" : false, "status" : 500, message: "Something happened.", err": '+ err + '}');
+    }
+});
+
+spotify.get('/createPlaylist', async function(req, res) {
+    try {
+        var pin = req.query.pin;
+        var name = req.query.name;
+        var token = await db.spotify.getToken(pin);
+        var profileResults = await service.getHostsProfile(token);
+        
+        if (typeof profileResults.id == "undefined") {
+            res.status(400).end('{"success" : false, "status" : 400, "message": "Something happened."}');
+        }
+
+        var id = profileResults.id;
+
+        var playlistResults = await service.createPlaylist(token, name, id);
+
+        if (playlistResults.success) {
             res.status(200).end('{"success" : true, "status" : 200, "data": '+ JSON.stringify(results) +'}');
         } else {
             res.status(400).end('{"success" : false, "status" : 400, "message": "' + + '"}');

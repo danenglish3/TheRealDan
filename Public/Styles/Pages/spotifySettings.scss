@@ -11,17 +11,14 @@
   margin-top: 20px;
   padding-bottom: 5px;
 }
-
 .option .heading {
   font-size: 20px;
   color: white;
 }
-
 .option .text {
   color: lightgray;
   padding-top: 2px;
 }
-
 .option .wrapper {
   display: flex;
 }
@@ -39,26 +36,22 @@
   padding: 10px;
   overflow: hidden;
 }
-
 #playbackModal .close {
   color: white;
   font-size: 15px;
   z-index: 10;
   position: absolute;
 }
-
 #playbackModal .button {
   margin-left: auto;
   margin-right: auto;
 }
-
 #playbackModal .header {
   justify-content: unset;
   padding-left: 10px;
   padding-right: 20px;
   font-size: 20px;
 }
-
 #playbackModal .content {
   position: relative;
   top: 50px;
@@ -66,12 +59,16 @@
   left: 0;
   right: 0;
   overflow-y: auto;
-}
-#playbackModal .content .song-wrapper:last-of-type {
-  margin-bottom: 100px;
-}
-#playbackModal .content .selected .fas {
-  color: green;
+
+  .song-wrapper:last-of-type {
+    margin-bottom: 100px;
+  }
+
+  .selected     {
+      .fas {
+          color: green;
+      }
+  }
 }
 
 #playbackModal .button.oval {
@@ -82,19 +79,20 @@
 }
 
 #newPlaylistModal {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background-color: black;
-  color: white;
-  z-index: 10;
-  padding: 100px 20px;
-  align-items: center;
-}
-#newPlaylistModal .flex .button {
-  width: 100px;
-}
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: black;
+    color:white;
+    z-index: 10;
+    padding: 100px 20px;
+    align-items: center;
 
-/*# sourceMappingURL=spotifysettings.css.map */
+    .flex {
+        .button{
+            width: 100px;
+        }
+    }
+}

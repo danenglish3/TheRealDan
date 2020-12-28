@@ -15,13 +15,15 @@
     <script src="../Scripts/default.js"></script>
     <script src="../Scripts/spotify.js"></script>
   </head>
-
+    <script>
+        localStorage.setItem('isHost', 'false');
+    </script>
     <% if (isHost) { %>
       <div id="pinBar"></div>
 
       <script>
-        var isHost = true;
         let pin = getPin();
+        localStorage.setItem('isHost', 'True');
         $("#pinBar").append("Pin: " + pin);
         $("body").addClass("host")
       </script>
@@ -33,10 +35,11 @@
     <div id="nowPlayingWrapper">
       <div id="progress"></div>
       <div id="playingTrack">
+        Nothing currently playing.
       </div>
     </div>
     <div class="footer">
-      <span><i class="fas fa-home"></i></span>
+      <span><i class="fas fa-search"></i></span>
       <span onclick="loadSettingsPage()"><i class="fas fa-cog"></i></span>
     </div>
 

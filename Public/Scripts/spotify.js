@@ -4,7 +4,7 @@ var currentlyPlayingSong;
 
 (function() {
     getCurrentlyPlayingSong();
-    currentlyPlayingSong = setInterval(getCurrentlyPlayingSong, 10000);
+    //currentlyPlayingSong = setInterval(getCurrentlyPlayingSong, 10000);
 })();
 
 function getCurrentlyPlayingSong() {

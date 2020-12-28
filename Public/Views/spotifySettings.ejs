@@ -9,6 +9,7 @@
     <title>Its party time</title>
 
     <link rel="stylesheet" href="../Styles/Pages/spotifySettings.css">
+    <link rel="stylesheet" href="../Styles/Pages/spotify.css">
     <link rel="stylesheet" href="../Styles/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/7eb84d2f2f.js"></script>
@@ -17,7 +18,7 @@
   </head>
   <body>
     <div class="header">Settings</div>
-    <div id="settingsWrapper">
+    <div id="settingsWrapper" class="host hidden">
       <div class="option">
         <div class="heading">Playback</div>
         <div class="wrapper">
@@ -28,9 +29,15 @@
           </select>          
         </div>
       </div>
+      <div class="option">
+        <div class="heading">Confirmation</div>
+        <div class="wrapper">
+          <div class="text">Confirm songs before they get added to your list.</div>
+        </div>
+      </div>
     </div>
     <div class="footer">
-      <span onclick="loadSearchPage()"><i class="fas fa-home"></i></span>
+      <span onclick="loadSearchPage()"><i class="fas fa-search"></i></span>
       <span><i class="fas fa-cog"></i></span>
     </div>
 
@@ -39,17 +46,39 @@
       <div id="errorButton" class="button small" onclick="errorButtonClick();">Ok</div>
     </div>
 
-    <div id="playbackModal" class="">
+    <div id="playbackModal" class="hidden">
       <div class="header">
         <div class="close" onclick="closeModal('playbackModal')">X</div>
         <div style="margin-left: auto; margin-right: auto;">Add to playlist</div>
       </div>
       <div class="content">
-        <div class="button oval">New Playlist</div>
+        <div class="button oval" onclick="$('#newPlaylistModal').removeClass('hidden');">New Playlist</div>
       </div>
-      <a id="savePlaybackClick" class="button" href="#" onclick="savePlaybackClick()">
-        <span>Save</span>
-      </a>
+      <div class="footer">
+        <a id="savePlaybackClick" class="button" href="#" onclick="closeModal('playbackModal');">
+          <span>Save</span>
+        </a>
+      </div>
     </div>
+
+    <div id="newPlaylistModal" class="hidden flex column">
+      <div style="font-weight:bold; font-size: 20px;">Give your playlist a name:</div>
+      <input id="playlistName" class="margin-top-60" style="font-size: 30px; height: 50px;"/>
+      <div class="flex even margin-top-60" style="width: 100%">
+        <a id="" class="button" href="#" onclick="$('#newPlaylistModal').addClass('hidden');">
+          <span>Cancel</span>
+        </a>      
+        <a id="" class="button" href="#" onclick="createPlaylist();">
+          <span>Save</span>
+        </a>      
+      </div>
+    </div>
+
+    <script>
+      let isHost = localStorage.getItem('isHost') == "True";
+      if (isHost) {
+          $("#settingsWrapper").removeClass('hidden');
+      }
+    </script>
   </body>
 </html>

@@ -51,6 +51,66 @@ exports.getHostsPlaylists = async function(token) {
     });
 }
 
+exports.getHostsProfile = async function(token) {
+    return new Promise((resolve, reject) => {
+        let url = encodeURI(config.hostProfile);
+        superagent.get(url)
+            .set('Authorization', 'Bearer ' + token.AccessToken)
+            .then(res => {
+                resolve(res.body);
+            })
+            .catch(err => {
+                console.log(err.status);
+                if (err.status == "401" || err.status == 401) {
+                    var accessToken = refreshToken(token);
+
+                    superagent.get(url)
+                    .set('Authorization', 'Bearer ' + accessToken)
+                    .then(res => {
+                        resolve(res.body);
+                    })
+                    .catch(err => {
+                        reject(err);
+                    })
+                } else {
+                    reject(err);
+                }
+            });
+    });
+}
+
+exports.createPlaylist = async function(token, name, id) {
+    return new Promise((resolve, reject) => {
+        let url = encodeURI(config.createPlaylist.replace("{user_id}", id));
+        
+        superagent.post(url)
+            .set('Authorization', 'Bearer ' + token.AccessToken)
+            .send({
+                name: name,
+            })
+            .then(res => {
+                resolve({"success": true});
+            })
+            .catch(res => {
+                var error = res.response.body.error;
+                
+                if (error.status == "401" && error.message == "The access token expired") {
+                    var accessToken = refreshToken(token);
+
+                    superagent.post(config.addToQueueEndpoint + '?uri='+uri)
+                    .set('Authorization', 'Bearer ' + accessToken)
+                    .then(res => {
+                        resolve(res);
+                    })
+                    .catch(err => {
+                    })
+                } else if (error.status == "404") {
+                    resolve({"success": false, "message": "No active device found."});
+                }
+            });
+    });
+}
+
 exports.getHostsCurrentlyPlayingSong = async function(token) {
     return new Promise((resolve, reject) => {
         let url = encodeURI(config.hostCurrentSong);
